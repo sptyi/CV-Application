@@ -1,7 +1,14 @@
 import React from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 
-const EducationForm = () => {
+const EducationForm = (
+	educationFormCount,
+	setEducationFormCount
+) => {
+	const updateEducationFormCount = () => {
+		setEducationFormCount(educationFormCount + 1);
+	};
+
 	return (
 		<>
 			<h1 style={styles.header}>Education</h1>
@@ -21,6 +28,15 @@ const EducationForm = () => {
 					<Form.Control style={styles.input} type='date' />
 					<p>To: </p>
 					<Form.Control style={styles.input} type='date' />
+					<br />
+					<Button
+						variant='info'
+						style={styles.button}
+						onClick={updateEducationFormCount}
+					>
+						Add Another
+					</Button>
+					<p>{educationFormCount}</p>
 				</Form>
 			</Container>
 		</>
@@ -47,6 +63,12 @@ const styles = {
 	},
 	label: {
 		fontSize: 20,
+	},
+	button: {
+		borderRadius: 15,
+		outline: 'none',
+		padding: 5,
+		width: 90,
 	},
 };
 

@@ -1,13 +1,15 @@
-// date from and until
 import React from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 
-const PracticalExperienceForm = () => {
+const PracticalExperienceForm = (
+	practicalExperienceFormCount,
+	setPracticalExperienceFormCount
+) => {
 	return (
 		<>
 			<h1 style={styles.header}>Practical Experience</h1>
 			<Container style={styles.generalWrapper}>
-				<Form>
+				<Form style={{ marginBottom: 20 }}>
 					<Form.Label style={styles.label}>Comapny Name: </Form.Label>
 					<br />
 					<Form.Control style={styles.input} placeholder='Google' />
@@ -18,14 +20,22 @@ const PracticalExperienceForm = () => {
 					<br />
 					<Form.Label style={styles.label}>Routine Tasks: </Form.Label>
 					<br />
-                    <Form.Control style={styles.input} placeholder='Server Maintenance' />
-                    <br />
-                    <Form.Label style={styles.label}>Date of Study: </Form.Label>
-                    <br />
-                    <p>From: </p>
-                    <Form.Control style={styles.input} type='date' />
-                    <p>To: </p>
-                    <Form.Control style={styles.input} type='date' />
+					<Form.Control style={styles.input} placeholder='Server Maintenance' />
+					<br />
+					<Form.Label style={styles.label}>Date of Study: </Form.Label>
+					<br />
+					<p>From: </p>
+					<Form.Control style={styles.input} type='date' />
+					<p>To: </p>
+					<Form.Control style={styles.input} type='date' />
+					<br />
+					<Button
+						variant='primary'
+						style={styles.button}
+						onClick={() => alert('This worked!')}
+					>
+						Add More
+					</Button>
 				</Form>
 			</Container>
 		</>
@@ -34,8 +44,8 @@ const PracticalExperienceForm = () => {
 
 const styles = {
 	header: {
-        marginBottom: 40,
-        marginTop: 50,
+		marginBottom: 40,
+		marginTop: 50,
 	},
 	generalWrapper: {
 		display: 'flex',
@@ -52,6 +62,12 @@ const styles = {
 	},
 	label: {
 		fontSize: 20,
+	},
+	button: {
+		borderRadius: 15,
+		outline: 'none',
+		padding: 5,
+		width: 90,
 	},
 };
 
