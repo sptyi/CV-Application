@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import '../App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Button } from 'react-bootstrap';
 import GeneralForm from './GeneralForm';
 import EducationForm from './EducationForm';
 import PracticalExperienceForm from './PracticalExperienceForm';
 
 function App() {
+	const [review, setReview] = useState(false);
 	const [educationFormCount, setEducationFormCount] = useState(1);
 	const [
 		practicalExperienceFormCount,
@@ -13,18 +16,62 @@ function App() {
 
 	return (
 		<div className='App'>
-			<GeneralForm />
-			<EducationForm
-				educationFormCount={educationFormCount}
-				setEducationFormCount={setEducationFormCount}
-            />
-            <p>{educationFormCount}</p>
-			<PracticalExperienceForm
-				practicalExperienceFormCount={practicalExperienceFormCount}
-				setPracticalExperienceFormCount={setPracticalExperienceFormCount}
-			/>
+			<Container style={{ marginBottom: 25 }}>
+				<GeneralForm review={review} />
+				<hr style={{ width: '50%', margin: '25px auto' }} />
+				<EducationForm />
+				<Button
+					variant='info'
+					style={styles.button}
+					onClick={() => setEducationFormCount(educationFormCount + 1)}
+				>
+					+
+				</Button>
+				<hr style={{ width: '50%', margin: '25px auto' }} />
+				<PracticalExperienceForm />
+				<Button
+					variant='info'
+					style={styles.button}
+					onClick={() =>
+						setPracticalExperienceFormCount(practicalExperienceFormCount + 1)
+					}
+				>
+					+
+				</Button>
+				<hr style={{ width: '50%', margin: '25px auto' }} />
+			</Container>
+			{!review ? (
+				<Button
+					variant='success'
+					style={styles.submit}
+					onClick={() => setReview(true)}
+				>
+					Review
+				</Button>
+			) : (
+				<Button
+					variant='primary'
+					style={styles.submit}
+					onClick={() => setReview(false)}
+				>
+					Edit
+				</Button>
+			)}
 		</div>
 	);
 }
+
+const styles = {
+	button: {
+		borderRadius: '50%',
+		outline: 'none',
+	},
+	submit: {
+		borderRadius: 25,
+		outline: 'none',
+		marginBottom: 25,
+		marginTop: 10,
+	},
+};
 
 export default App;
