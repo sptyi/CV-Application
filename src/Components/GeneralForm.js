@@ -10,7 +10,7 @@ const GeneralForm = review => {
 		<>
 			<h1 style={styles.header}>General Information</h1>
 			<Container style={styles.generalWrapper}>
-				{review ? (
+				{!review ? (
 					<Form>
 						<Form.Label style={styles.label}>Name: </Form.Label>
 						<Form.Control

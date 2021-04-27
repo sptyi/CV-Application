@@ -10,9 +10,9 @@ const PracticalExperienceForm = () => {
 					<Form.Label style={styles.label}>Comapny Name: </Form.Label>
 					<Form.Control style={styles.input} placeholder='Google' />
 					<Form.Label style={styles.label}>Position: </Form.Label>
-					<Form.Control style={styles.input} placeholder='Data Scientist' />
+					<Form.Control style={styles.input} placeholder='Developer' />
 					<Form.Label style={styles.label}>Routine Tasks: </Form.Label>
-					<Form.Control style={styles.input} placeholder='Server Maintenance' />
+					<Form.Control style={styles.input} placeholder='Designing new features...' />
 					<Form.Label style={styles.label}>Date of Study: </Form.Label>
 					<p>From: </p>
 					<Form.Control style={styles.input} type='date' />
