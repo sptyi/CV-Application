@@ -9,10 +9,8 @@ import PracticalExperienceForm from './PracticalExperienceForm';
 function App() {
 	const [review, setReview] = useState(false);
 	const [educationFormCount, setEducationFormCount] = useState(1);
-	const [
-		practicalExperienceFormCount,
-		setPracticalExperienceFormCount,
-	] = useState(1);
+	const [practicalExperienceFormCount, setPracticalExperienceFormCount] =
+		useState(1);
 
 	return (
 		<div className='App'>
@@ -40,23 +38,26 @@ function App() {
 				</Button>
 				<hr style={{ width: '50%', margin: '25px auto' }} />
 			</Container>
-			{!review ? (
+			<div style={styles.buttonWrapper}>
 				<Button
-					variant='success'
+					variant={!review ? 'primary' : 'warning'}
 					style={styles.submit}
-					onClick={() => setReview(true)}
+					onClick={() => {
+						setReview(!review);
+					}}
 				>
-					Review
+					{review ? 'Edit' : 'Review'}
 				</Button>
-			) : (
-				<Button
-					variant='primary'
-					style={styles.submit}
-					onClick={() => setReview(false)}
-				>
-					Edit
-				</Button>
-			)}
+				{review && (
+					<Button
+						variant='success'
+						disabled={review ? false : true}
+						style={styles.submit}
+					>
+						Submit
+					</Button>
+				)}
+			</div>
 		</div>
 	);
 }
@@ -65,6 +66,12 @@ const styles = {
 	button: {
 		borderRadius: '50%',
 		outline: 'none',
+	},
+	buttonWrapper: {
+		width: '30%',
+		margin: 'auto',
+		display: 'flex',
+		justifyContent: 'space-around',
 	},
 	submit: {
 		borderRadius: 25,
