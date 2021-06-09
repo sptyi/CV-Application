@@ -11,13 +11,20 @@ function App() {
 	const [educationFormCount, setEducationFormCount] = useState(1);
 	const [practicalExperienceFormCount, setPracticalExperienceFormCount] =
 		useState(1);
+	
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
+	};
 
 	return (
 		<div className='App'>
 			<Container style={{ marginBottom: 25 }}>
 				<GeneralForm review={review} />
 				<hr style={{ width: '50%', margin: '25px auto' }} />
-				<EducationForm />
+				<EducationForm review={review} />
 				<Button
 					variant='info'
 					style={styles.button}
@@ -26,7 +33,7 @@ function App() {
 					+
 				</Button>
 				<hr style={{ width: '50%', margin: '25px auto' }} />
-				<PracticalExperienceForm />
+				<PracticalExperienceForm review={review} />
 				<Button
 					variant='info'
 					style={styles.button}
@@ -44,6 +51,7 @@ function App() {
 					style={styles.submit}
 					onClick={() => {
 						setReview(!review);
+						scrollToTop();
 					}}
 				>
 					{review ? 'Edit' : 'Review'}

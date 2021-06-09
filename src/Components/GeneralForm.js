@@ -18,6 +18,7 @@ const GeneralForm = ({ review }) => {
 							style={styles.textInput}
 							placeholder='Who are you?'
 							onChange={e => setName(e.target.value)}
+							value={name}
 						/>
 						<Form.Label style={styles.label}>Email: </Form.Label>
 						<Form.Control
@@ -26,6 +27,7 @@ const GeneralForm = ({ review }) => {
 							placeholder='you@wherever.com'
 							type='email'
 							onChange={e => setEmail(e.target.value)}
+							value={email}
 						/>
 						<Form.Label style={styles.label}>Phone #: </Form.Label>
 						<Form.Control
@@ -34,6 +36,7 @@ const GeneralForm = ({ review }) => {
 							placeholder='555-123-4567'
 							type='tel'
 							onChange={e => setPhone(e.target.value)}
+							value={phone}
 						/>
 					</Form>
 				) : (
