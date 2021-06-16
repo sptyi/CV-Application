@@ -9,22 +9,25 @@ import PracticalExperienceForm from './PracticalExperienceForm';
 function App() {
 	const [review, setReview] = useState(false);
 	const [educationFormCount, setEducationFormCount] = useState(1);
-	const [practicalExperienceFormCount, setPracticalExperienceFormCount] =
-		useState(1);
-	
+
 	const scrollToTop = () => {
 		window.scrollTo({
 			top: 0,
-			behavior: "smooth"
+			behavior: 'smooth',
 		});
 	};
+
+	let practicalFormCount = [<PracticalExperienceForm review={review} />];
 
 	return (
 		<div className='App'>
 			<Container style={{ marginBottom: 25 }}>
 				<GeneralForm review={review} />
+
 				<hr style={{ width: '50%', margin: '25px auto' }} />
+
 				<EducationForm review={review} />
+
 				<Button
 					variant='info'
 					style={styles.button}
@@ -32,19 +35,28 @@ function App() {
 				>
 					+
 				</Button>
+
 				<hr style={{ width: '50%', margin: '25px auto' }} />
-				<PracticalExperienceForm review={review} />
+
+				{practicalFormCount.map((elem, i) => {
+					return elem;
+				})}
+
 				<Button
 					variant='info'
 					style={styles.button}
-					onClick={() =>
-						setPracticalExperienceFormCount(practicalExperienceFormCount + 1)
-					}
+					onClick={() => {
+						practicalFormCount.push(
+							<PracticalExperienceForm review={review} />
+						);
+					}}
 				>
 					+
 				</Button>
+
 				<hr style={{ width: '50%', margin: '25px auto' }} />
 			</Container>
+
 			<div style={styles.buttonWrapper}>
 				<Button
 					variant={!review ? 'primary' : 'warning'}
@@ -56,6 +68,7 @@ function App() {
 				>
 					{review ? 'Edit' : 'Review'}
 				</Button>
+
 				{review && (
 					<Button
 						variant='success'
