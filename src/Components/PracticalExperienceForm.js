@@ -10,8 +10,7 @@ const PracticalExperienceForm = ({ review }) => {
 
 	return (
 		<>
-			<h1 style={styles.header}>Practical Experience</h1>
-			<Container style={styles.generalWrapper}>
+			<Container style={styles.container}>
 				{!review ? (
 					<Form>
 						<Form.Label style={styles.label}>Company Name: </Form.Label>
@@ -70,13 +69,13 @@ const PracticalExperienceForm = ({ review }) => {
 };
 
 const styles = {
-	header: {
-		marginBottom: 40,
-	},
-	generalWrapper: {
+	container: {
 		display: 'flex',
 		flexDirection: 'column',
-		width: '40%',
+		width: '75%',
+		borderRadius: '10px',
+		boxShadow: '2px 2px 5px #333',
+		marginBottom: 25,
 	},
 	input: {
 		borderRadius: 50,

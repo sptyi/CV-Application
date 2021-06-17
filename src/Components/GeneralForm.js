@@ -8,8 +8,7 @@ const GeneralForm = ({ review }) => {
 
 	return (
 		<>
-			<h1 style={styles.header}>General Information</h1>
-			<Container style={styles.generalWrapper}>
+			<Container style={styles.container}>
 				{!review ? (
 					<Form>
 						<Form.Label style={styles.label}>Name: </Form.Label>
@@ -55,14 +54,18 @@ const GeneralForm = ({ review }) => {
 };
 
 const styles = {
-	header: {
-		marginBottom: 40,
-		marginTop: 25,
-	},
-	generalWrapper: {
+	container: {
 		display: 'flex',
 		flexDirection: 'column',
 		width: '40%',
+		borderRadius: '10px',
+		boxShadow: '2px 2px 5px #333',
+		marginBottom: 25,
+	},
+	header: {
+		marginBottom: 10,
+		marginTop: 25,
+		fontSize: 30,
 	},
 	textInput: {
 		borderRadius: 50,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button } from 'react-bootstrap';
@@ -8,7 +8,8 @@ import PracticalExperienceForm from './PracticalExperienceForm';
 
 function App() {
 	const [review, setReview] = useState(false);
-	const [educationFormCount, setEducationFormCount] = useState(1);
+	const [educationForms, setEducationForms] = useState([]);
+	const [practicalForms, setPracticalForms] = useState([]);
 
 	const scrollToTop = () => {
 		window.scrollTo({
@@ -17,45 +18,56 @@ function App() {
 		});
 	};
 
-	let practicalFormCount = [<PracticalExperienceForm review={review} />];
-
 	return (
 		<div className='App'>
-			<Container style={{ marginBottom: 25 }}>
+			<div style={styles.container}>
+				<h1 style={styles.header}>General Information</h1>
 				<GeneralForm review={review} />
 
-				<hr style={{ width: '50%', margin: '25px auto' }} />
+				<div style={{ display: 'flex' }}>
+					<div style={{ width: '50%' }}>
+						<h1 style={styles.header}>Education</h1>
+						<EducationForm review={review} />
+						{educationForms.map(elem => {
+							return elem;
+						})}
 
-				<EducationForm review={review} />
+						{!review &&
+							<Button
+								variant='info'
+								style={styles.plusButton}
+								onClick={() => {
+									setEducationForms([...educationForms, <EducationForm review={review} />]);
+								}}
+							>
+								+
+							</Button>
+						}
+					</div>
 
-				<Button
-					variant='info'
-					style={styles.button}
-					onClick={() => setEducationFormCount(educationFormCount + 1)}
-				>
-					+
-				</Button>
+					<div style={{ width: '50%' }}>
+						<h1 style={styles.header}>Practical Experience</h1>
+						<PracticalExperienceForm review={review} />
+						{practicalForms.map(elem => {
+							return elem;
+						})}
 
-				<hr style={{ width: '50%', margin: '25px auto' }} />
+						{!review &&
+							<Button
+								variant='info'
+								style={styles.plusButton}
+								onClick={() => {
+									setPracticalForms([...practicalForms, <PracticalExperienceForm review={review} />])
+								}}
+							>
+								+
+							</Button>
+						}
+					</div>
+				</div>
+			</div>
 
-				{practicalFormCount.map((elem, i) => {
-					return elem;
-				})}
-
-				<Button
-					variant='info'
-					style={styles.button}
-					onClick={() => {
-						practicalFormCount.push(
-							<PracticalExperienceForm review={review} />
-						);
-					}}
-				>
-					+
-				</Button>
-
-				<hr style={{ width: '50%', margin: '25px auto' }} />
-			</Container>
+			<hr style={{ width: '30%', margin: '25px auto' }} />
 
 			<div style={styles.buttonWrapper}>
 				<Button
@@ -84,9 +96,21 @@ function App() {
 }
 
 const styles = {
+	container: {
+		marginTop: 25,
+	},
+	header: {
+		marginBottom: 10,
+		fontSize: 30,
+	},
 	button: {
 		borderRadius: '50%',
 		outline: 'none',
+	},
+	plusButton: {
+		borderRadius: '50%',
+		outline: 'none',
+		boxShadow: '1px 1px 5px #333, -1px -1px 5px #333',
 	},
 	buttonWrapper: {
 		width: '30%',

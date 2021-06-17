@@ -9,8 +9,7 @@ const EducationForm = ({ review }) => {
 
 	return (
 		<>
-			<h1 style={styles.header}>Education</h1>
-			<Container style={styles.generalWrapper}>
+			<Container style={styles.container}>
 				{!review ? (
 					<Form>
 						<Form.Label style={styles.label}>School Name: </Form.Label>
@@ -60,13 +59,16 @@ const EducationForm = ({ review }) => {
 };
 
 const styles = {
-	header: {
-		marginBottom: 40,
-	},
-	generalWrapper: {
+	container: {
 		display: 'flex',
 		flexDirection: 'column',
-		width: '40%',
+		width: '75%',
+		borderRadius: '10px',
+		boxShadow: '2px 2px 5px #333',
+		marginBottom: 25,
+	},
+	header: {
+		marginBottom: 40,
 	},
 	input: {
 		borderRadius: 50,
