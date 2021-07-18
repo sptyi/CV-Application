@@ -12,56 +12,74 @@ const PracticalExperienceForm = ({ review }) => {
 		<>
 			<Container style={styles.container}>
 				{!review ? (
-					<Form>
-						<Form.Label style={styles.label}>Company Name: </Form.Label>
-						<Form.Control
-							style={styles.input}
-							placeholder='Google'
-							onChange={e => setCompanyName(e.target.value)}
-							value={companyName}
-						/>
-						<Form.Label style={styles.label}>Position: </Form.Label>
-						<Form.Control
-							style={styles.input}
-							placeholder='Developer'
-							onChange={e => setPosition(e.target.value)}
-							value={position}
-						/>
-						<Form.Label style={styles.label}>Routine Tasks: </Form.Label>
-						<Form.Control
-							style={styles.input}
-							placeholder='Designing new features...'
-							onChange={e => setRoutineTasks(e.target.value)}
-							value={routineTasks}
-						/>
+					<Form style={styles.form}>
+						<div style={styles.sectionWrapper}>
+							<div></div>
+							<Form.Label style={styles.label}>Company Name: </Form.Label>
+							<Form.Control
+								style={styles.input}
+								placeholder='Google'
+								onChange={e => setCompanyName(e.target.value)}
+								value={companyName}
+							/>
+						</div>
+
+						<div style={styles.sectionWrapper}>
+							<div></div>
+							<Form.Label style={styles.label}>Position: </Form.Label>
+							<Form.Control
+								style={styles.input}
+								placeholder='Developer'
+								onChange={e => setPosition(e.target.value)}
+								value={position}
+							/>
+						</div>
+
+						<div style={styles.sectionWrapper}>
+							<div></div>
+							<Form.Label style={styles.label}>Routine Tasks: </Form.Label>
+							<Form.Control
+								style={styles.input}
+								placeholder='Designing new features...'
+								onChange={e => setRoutineTasks(e.target.value)}
+								value={routineTasks}
+							/>
+						</div>
+
 						<Form.Label style={styles.label}>Date of Employment: </Form.Label>
-						<p>From: </p>
-						<Form.Control
-							style={styles.input}
-							type='date'
-							onChange={e => setDateFrom(e.target.value)}
-							value={dateFrom}
-						/>
-						<p>To: </p>
-						<Form.Control
-							style={styles.input}
-							type='date'
-							onChange={e => setDateTo(e.target.value)}
-							value={dateTo}
-						/>
+						<div style={styles.sectionWrapper}>
+							<div></div>
+							<p style={{ margin: '12px 0' }}>From: </p>
+							<Form.Control
+								style={styles.input}
+								type='date'
+								onChange={e => setDateFrom(e.target.value)}
+								value={dateFrom}
+							/>
+						</div>
+						<div style={styles.sectionWrapper}>
+							<div></div>
+							<p style={{ margin: '12px 0' }}>To: </p>
+							<Form.Control
+								style={styles.input}
+								type='date'
+								onChange={e => setDateTo(e.target.value)}
+								value={dateTo}
+							/>
+						</div>
 					</Form>
 				) : (
-					<>
-						<h2 style={styles.label}>Company Name:</h2>
+					<div style={styles.form}>
+						<h2 style={styles.reviewLabel}>Company Name:</h2>
 						<p style={styles.text}>{companyName}</p>
-						<h2 style={styles.label}>Position:</h2>
+						<h2 style={styles.reviewLabel}>Position:</h2>
 						<p style={styles.text}>{position}</p>
-						<h2 style={styles.label}>Routine Tasks:</h2>
+						<h2 style={styles.reviewLabel}>Routine Tasks:</h2>
 						<p style={styles.text}>{routineTasks}</p>
-						<h2 style={styles.label}>Date of Employment:</h2>
+						<h2 style={styles.reviewLabel}>Date of Employment:</h2>
 						<p style={styles.text}>From: {dateFrom}</p>
 						<p style={styles.text}>To: {dateTo}</p>
-					</>
+					</div>
 				)}
 			</Container>
 		</>
@@ -74,15 +92,31 @@ const styles = {
 		flexDirection: 'column',
 		width: '75%',
 		borderRadius: '10px',
-		boxShadow: '2px 2px 5px #333',
+		boxShadow: '1px 1px 5px #777, -1px -1px 5px #777',
 		marginBottom: 25,
+	},
+	form: {
+		padding: 25,
 	},
 	input: {
 		borderRadius: 50,
-		marginBottom: 30,
+		margin: '10px 0',
+		width: '60%',
 	},
 	label: {
+		fontSize: 17,
+		marginBottom: 10,
+		marginTop: 15,
+	},
+	reviewLabel: {
 		fontSize: 20,
+	},
+	text: {
+		fontSize: 15,
+	},
+	sectionWrapper: {
+		display: 'flex',
+		justifyContent: 'space-between',
 	},
 };
 

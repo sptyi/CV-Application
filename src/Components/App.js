@@ -1,7 +1,7 @@
-import React, { useState, lazy } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import GeneralForm from './GeneralForm';
 import EducationForm from './EducationForm';
 import PracticalExperienceForm from './PracticalExperienceForm';
@@ -21,48 +21,55 @@ function App() {
 	return (
 		<div className='App'>
 			<div style={styles.container}>
-				<h1 style={styles.header}>General Information</h1>
+				<h1 style={{ marginBottom: 25 }}>My CV</h1>
+				<h2 style={styles.header}>General Information</h2>
 				<GeneralForm review={review} />
 
 				<div style={{ display: 'flex' }}>
 					<div style={{ width: '50%' }}>
-						<h1 style={styles.header}>Education</h1>
+						<h2 style={styles.header}>Education</h2>
 						<EducationForm review={review} />
 						{educationForms.map(elem => {
 							return elem;
 						})}
 
-						{!review &&
+						{!review && (
 							<Button
 								variant='info'
 								style={styles.plusButton}
 								onClick={() => {
-									setEducationForms([...educationForms, <EducationForm review={review} />]);
+									setEducationForms([
+										...educationForms,
+										<EducationForm review={review} />,
+									]);
 								}}
 							>
 								+
 							</Button>
-						}
+						)}
 					</div>
 
 					<div style={{ width: '50%' }}>
-						<h1 style={styles.header}>Practical Experience</h1>
+						<h2 style={styles.header}>Practical Experience</h2>
 						<PracticalExperienceForm review={review} />
 						{practicalForms.map(elem => {
 							return elem;
 						})}
 
-						{!review &&
+						{!review && (
 							<Button
 								variant='info'
 								style={styles.plusButton}
 								onClick={() => {
-									setPracticalForms([...practicalForms, <PracticalExperienceForm review={review} />])
+									setPracticalForms([
+										...practicalForms,
+										<PracticalExperienceForm review={review} />,
+									]);
 								}}
 							>
 								+
 							</Button>
-						}
+						)}
 					</div>
 				</div>
 			</div>
@@ -103,14 +110,13 @@ const styles = {
 		marginBottom: 10,
 		fontSize: 30,
 	},
-	button: {
-		borderRadius: '50%',
-		outline: 'none',
-	},
 	plusButton: {
-		borderRadius: '50%',
+		width: 40,
+		height: 40,
+		borderRadius: 20,
+		padding: 0,
 		outline: 'none',
-		boxShadow: '1px 1px 5px #333, -1px -1px 5px #333',
+		boxShadow: '1px 1px 5px #777, -1px -1px 5px #777',
 	},
 	buttonWrapper: {
 		width: '30%',
@@ -123,6 +129,7 @@ const styles = {
 		outline: 'none',
 		marginBottom: 25,
 		marginTop: 10,
+		boxShadow: '1px 1px 5px #777, -1px -1px 5px #777',
 	},
 };
 
